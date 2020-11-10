@@ -34,18 +34,25 @@ module.exports = function bumper(config = {}) {
              * @returns {Object} with the level and the reason
              */
             whatBump(commits) {
+
+                //Levels are '2' for fix, '1' for feature, '0' for breaking
                 let level = 2;
                 let breakings = 0;
                 let features = 0;
                 let fixes = 0;
 
+                //console.log(commits);
                 commits.forEach(commit => {
-                    addBangNotes(commit);   //add notes if breaking change or with "!"
+                    addBangNotes(commit); //add notes if breaking change or with "!"
+
+                    //it looks like in cc preset it's the way to detect breaking change.
+                    //if other notes types are added, it would be better to add a "breaking" property to the commit
                     if (commit.notes.length > 0) {
-                        breakings += commit.notes.length;
+                        breakings++;
                         level = 0;
-                    } else if (commit.type === 'feat' || commit.type === 'feature') {
-                        features ++;
+                    }
+                    if (commit.type === 'feat' || commit.type === 'feature') {
+                        features++;
                         if (level === 2) {
                             level = 1;
                         }
@@ -61,12 +68,12 @@ module.exports = function bumper(config = {}) {
                 return {
                     level: level,
                     reason: getReason(breakings, features, fixes),
-                    stats : {
+                    stats: {
                         commits: commits.length,
                         breakings,
                         features,
                         fixes,
-                        unset: commits.some(({ type, merge }) => !type && !merge)
+                        unset: commits.filter(({ type, merge }) => !type && !merge).length
                     }
                 };
             }
@@ -84,7 +91,7 @@ module.exports = function bumper(config = {}) {
  */
 function getReason(breakings = 0, features = 0, fixes = 0) {
     return [
-        breakings > 1 ? `There are ${breakings} BREAKING CHANGES` : 'There is no breaking change',
+        `There are ${breakings} BREAKING CHANGE${breakings > 1 ? `S` : ''}`,
         `${features} feature${features > 1 ? 's' : ''}`,
         `${fixes} fix${fixes > 1 ? 'es' : ''}`
     ].join(', ');

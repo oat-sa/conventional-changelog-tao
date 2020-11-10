@@ -35,7 +35,7 @@ function loadPresetOptions(presetConfig = {}) {
             gitRawCommitsOpts: { noMerges: null },
             parserOpts,
             writerOpts,
-            recommendedBumpOpts: { parserOpts, whatBump: bumpOpts.whatBump }
+            recommendedBumpOpts: Object.assign({ parserOpts }, bumpOpts)
         })
     );
 }
