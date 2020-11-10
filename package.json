@@ -8,7 +8,11 @@
         "*.js"
     ],
     "scripts": {
-        "lint": "eslint *.js"
+        "lint": "eslint *.js",
+        "test:dev": "nodemon -e js --watch tests --watch src --delay 1 --exec npm run test",
+        "test:cov": "nyc npm test",
+        "test:cov:html": "nyc report --reporter=lcov && open-cli coverage/lcov-report/index.html",
+        "test": "tape \"tests/**/test.js\" | tap-diff || true"
     },
     "author": "",
     "license": "GPL-2.0",
@@ -28,7 +32,13 @@
         "eslint": "^7.13.0",
         "eslint-plugin-es": "^3.0.1",
         "eslint-plugin-jsdoc": "^30.7.7",
-        "prettier": "^2.1.2"
+        "nodemon": "^2.0.6",
+        "nyc": "^15.1.0",
+        "open-cli": "^6.0.1",
+        "prettier": "^2.1.2",
+        "tap-diff": "^0.1.1",
+        "tape": "^5.0.1",
+        "tape-promise": "^4.0.0"
     },
     "prettier": "@oat-sa/prettier-config"
 }
