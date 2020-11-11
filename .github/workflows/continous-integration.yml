@@ -21,8 +21,9 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     - name: Running tests
-      run: npm run test:cov:clover
+      run: npm run test:cov
     - name: Report coverage
+      run: npm run test:cov:clover
       if: always()
       uses: slavcodev/coverage-monitor-action@1.1.0
       with:
