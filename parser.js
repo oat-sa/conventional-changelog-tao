@@ -31,7 +31,7 @@ module.exports = function parser(config = {}) {
         revertPattern: /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
         revertCorrespondence: ['header', 'hash'],
         issuePrefixes: ['#'],
-        mergePattern: /^Merge pull request #(\d+) from (.*)$/,
-        mergeCorrespondence: ['id', 'source']
+        mergePattern: /^Merge (branch '(.*)' into (.*)|pull request #(\d+) from (.*))$/,
+        mergeCorrespondence: ['source', 'destination', 'id', 'source']
     }, config);
 };
