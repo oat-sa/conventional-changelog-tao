@@ -41,26 +41,40 @@ test('the merge detection pattern', t => {
     const cases = [
         [
             'Merge pull request #107 from oat-sa/fix/BBQ-567/fix-wrong-dep',
-            [noop, noop, '107', 'oat-sa/fix/BBQ-567/fix-wrong-dep']
+            [noop, noop, '107', 'oat-sa/fix/BBQ-567/fix-wrong-dep', noop, noop]
         ],
-        [
-            `Merge branch 'develop' into master`,
-            [`'develop'`, 'master', noop, noop]
-        ],
+        [`Merge branch 'develop' into master`, [`'develop'`, 'master', noop, noop, noop, noop]],
         [
             `Merge branch 'develop' of https://github.com/oat-sa/extension-tao-foo/ into feature/ABC-546/plop`,
-            [`'develop' of https://github.com/oat-sa/extension-tao-foo/`, 'feature/ABC-546/plop', noop, noop]
+            [
+                `'develop' of https://github.com/oat-sa/extension-tao-foo/`,
+                'feature/ABC-546/plop',
+                noop,
+                noop,
+                noop,
+                noop
+            ]
         ],
         [
             'Merge BRANCH "develop" and feature/ABC-546/plop into "main"',
-            ['"develop" and feature/ABC-546/plop' , '"main"', noop, noop]
+            ['"develop" and feature/ABC-546/plop', '"main"', noop, noop, noop, noop]
+        ],
+        [
+            'Merge 1f120f0102b4ec9e035a57f24f0378a034b0e478 into 0fb13d2977e202219a7982cce183a5b91543e6b6',
+            [
+                noop,
+                noop,
+                noop,
+                noop,
+                '1f120f0102b4ec9e035a57f24f0378a034b0e478',
+                '0fb13d2977e202219a7982cce183a5b91543e6b6'
+            ]
         ]
     ];
 
     for (let [expression, expected] of cases) {
-        t.deepEqual(expression.match(options.mergePattern).slice(1, 5), expected);
+        t.deepEqual(expression.match(options.mergePattern).slice(1, 7), expected);
     }
-
 
     t.equal('fix: foo'.match(options.mergePattern), null);
     t.equal('feat!: some nice feature'.match(options.mergePattern), null);
