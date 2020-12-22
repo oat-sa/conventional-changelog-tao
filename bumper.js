@@ -73,6 +73,7 @@ module.exports = function bumper(config = {}) {
                         breakings,
                         features,
                         fixes,
+                        merge: commits.filter(({ merge }) => !!merge).length,
                         unset: commits.filter(({ type, merge }) => !type && !merge).length
                     }
                 };
