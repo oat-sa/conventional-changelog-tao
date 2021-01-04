@@ -75,6 +75,7 @@ test('whatBump returns correct level, reason and stats with one fix commit', t =
             breakings: 0,
             features: 0,
             fixes: 1,
+            merge: 0,
             unset: 0
         }
     });
@@ -121,6 +122,7 @@ test('whatBump returns correct level, reason and stats with multiple commits inc
             breakings: 0,
             features: 1,
             fixes: 2,
+            merge: 0,
             unset: 0
         }
     });
@@ -173,6 +175,7 @@ test('whatBump returns correct level, reason and stats with a breaking change in
             breakings: 1,
             features: 1,
             fixes: 2,
+            merge: 1,
             unset: 0
         }
     });
@@ -194,7 +197,12 @@ test('whatBump returns correct level, reason and stats with a single breaking ch
             header: 'feat: change the temperature controller interface',
             footer: 'BREAKING CHANGE: be carefull the controller interface has changed',
             notes: [{ text: 'be carefull the controller interface has changed' }]
-        })
+        }),
+        getCommit({
+            source: 'oat-sa/fix/BBQ-987/cap-grill-temparature',
+            merge: 'Merge af78gh inot cd16be',
+            header: 'Merge af78gh inot cd16be'
+        }),
     ];
 
     const results = bumper().whatBump(commits);
@@ -203,10 +211,11 @@ test('whatBump returns correct level, reason and stats with a single breaking ch
         level: 0,
         reason: 'There are 1 BREAKING CHANGE, 1 feature, 0 fix',
         stats: {
-            commits: 2,
+            commits: 3,
             breakings: 1,
             features: 1,
             fixes: 0,
+            merge: 2,
             unset: 0
         }
     });
@@ -246,6 +255,7 @@ test('whatBump returns correct level, reason and stats without any conv commit',
             breakings: 0,
             features: 0,
             fixes: 0,
+            merge: 1,
             unset: 3
         }
     });
