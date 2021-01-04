@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa/conventional-changelog-tao",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "TAO Preset for conventional changelog",
     "homepage": "https://github.com/oat-sa/conventional-changelog-tao#readme",
     "main": "index.js",
