@@ -43,21 +43,23 @@ module.exports = function bumper(config = {}) {
 
                 //console.log(commits);
                 commits.forEach(commit => {
-                    addBangNotes(commit); //add notes if breaking change or with "!"
+                    if(commit.merge === null){
+                        addBangNotes(commit); //add notes if breaking change or with "!"
 
-                    //it looks like in cc preset it's the way to detect breaking change.
-                    //if other notes types are added, it would be better to add a "breaking" property to the commit
-                    if (commit.notes.length > 0) {
-                        breakings++;
-                        level = 0;
-                    }
-                    if (commit.type === 'feat' || commit.type === 'feature') {
-                        features++;
-                        if (level === 2) {
-                            level = 1;
+                        //it looks like in cc preset it's the way to detect breaking change.
+                        //if other notes types are added, it would be better to add a "breaking" property to the commit
+                        if (commit.notes.length > 0) {
+                            breakings++;
+                            level = 0;
                         }
-                    } else if (commit.type === 'fix') {
-                        fixes++;
+                        if (commit.type === 'feat' || commit.type === 'feature') {
+                            features++;
+                            if (level === 2) {
+                                level = 1;
+                            }
+                        } else if (commit.type === 'fix') {
+                            fixes++;
+                        }
                     }
                 });
 
