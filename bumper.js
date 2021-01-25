@@ -43,7 +43,7 @@ module.exports = function bumper(config = {}) {
 
                 //console.log(commits);
                 commits.forEach(commit => {
-                    if(commit.merge === null){
+                    if (commit.merge === null) {
                         addBangNotes(commit); //add notes if breaking change or with "!"
 
                         //it looks like in cc preset it's the way to detect breaking change.
