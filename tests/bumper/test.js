@@ -136,7 +136,8 @@ test('whatBump returns correct level, reason and stats with a breaking change in
             id: '106',
             source: 'oat-sa/fix/BBQ-987/cap-grill-temparature',
             merge: 'Merge pull request #106 from oat-sa/fix/BBQ-987/cap-grill-temparature',
-            header: 'Fix/bbq 987/cap grill temparature'
+            type: 'fix',
+            header: 'fix: cap grill temparature'
         }),
         getCommit({
             type: 'fix',
@@ -227,9 +228,10 @@ test('whatBump returns correct level, reason and stats without any conv commit',
     const commits = [
         getCommit({
             id: '106',
+            type: 'feat',
             source: 'oat-sa/fix/BBQ-987/cap-grill-temparature',
             merge: 'Merge pull request #106 from oat-sa/fix/BBQ-987/cap-grill-temparature',
-            header: 'Fix/bbq 987/cap grill temparature'
+            header: 'feat: cap grill temparature'
         }),
         getCommit({
             subject: 'update controller with new bbq master',
