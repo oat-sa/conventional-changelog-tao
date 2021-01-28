@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa/conventional-changelog-tao",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "TAO Preset for conventional changelog",
     "homepage": "https://github.com/oat-sa/conventional-changelog-tao#readme",
     "main": "index.js",
@@ -23,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/oat-sa/conventional-changelog-tao.git"
+        "url": "git+https://github.com/oat-sa/conventional-changelog-tao.git"
     },
     "dependencies": {
         "conventional-changelog-conventionalcommits": "^4.5.0"
@@ -42,5 +42,8 @@
         "tape": "^5.0.1",
         "tape-promise": "^4.0.0"
     },
-    "prettier": "@oat-sa/prettier-config"
+    "prettier": "@oat-sa/prettier-config",
+    "bugs": {
+        "url": "https://github.com/oat-sa/conventional-changelog-tao/issues"
+    }
 }
