@@ -26,20 +26,18 @@
         "url": "git+https://github.com/oat-sa/conventional-changelog-tao.git"
     },
     "dependencies": {
-        "conventional-changelog-conventionalcommits": "^4.5.0"
+        "conventional-changelog-conventionalcommits": "^5.0.0"
     },
     "devDependencies": {
-        "@oat-sa/eslint-config-tao": "^0.1.1",
+        "@oat-sa/eslint-config-tao": "^2.0.0",
         "@oat-sa/prettier-config": "^0.1.1",
         "@randomgoods/tap-spec": "^5.0.3",
-        "eslint": "^7.13.0",
-        "eslint-plugin-es": "^3.0.1",
-        "eslint-plugin-jsdoc": "^30.7.7",
-        "nodemon": "^2.0.6",
+        "eslint": "^8.40.0",
+        "nodemon": "^2.0.22",
         "nyc": "^15.1.0",
         "open-cli": "^7.2.0",
-        "prettier": "^2.1.2",
-        "tape": "^5.0.1",
+        "prettier": "^2.8.8",
+        "tape": "^5.6.3",
         "tape-promise": "^4.0.0"
     },
     "prettier": "@oat-sa/prettier-config",
