@@ -21,6 +21,10 @@
     "publishConfig": {
         "access": "public"
     },
+    "engines": {
+        "node": ">=14.15.0",
+        "npm": ">=8.3.0"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/oat-sa/conventional-changelog-tao.git"
@@ -39,6 +43,10 @@
         "prettier": "^2.8.8",
         "tape": "^5.6.3",
         "tape-promise": "^4.0.0"
+    },
+    "overrides": {
+        "@babel/traverse": "^7.28.5",
+        "istanbul-lib-instrument": "^6.0.3"
     },
     "prettier": "@oat-sa/prettier-config",
     "bugs": {
